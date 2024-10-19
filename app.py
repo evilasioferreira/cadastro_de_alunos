@@ -8,38 +8,39 @@ class App:
         self.escola = Escola(nome, endereco)
         self.janela = Tk()
         self.janela.title(f"Sistema - {self.escola.nome}")
+        self.janela.iconbitmap("aluna.ico")
 
-        # Label
+        #Matricula
         self.label_matricula = Label(self.janela, text='Matricula',
                                      font='Tahoma 14 bold', fg='red')
         self.label_matricula.grid(row=0, column=0)
 
-        # Entry
+        
         self.txt_matricula = Entry(self.janela, font='Tahoma 14',
-                                   width=27, state=DISABLED)
+                                   width=27, state=DISABLED) #campo desabilitado
         self.txt_matricula.grid(row=0, column=1)
 
-                # Label
+        #Nome        
         self.label_nome = Label(self.janela, text='Nome',
                                      font='Tahoma 14 bold', fg='red')
         self.label_nome.grid(row=1, column=0)
 
-        # Entry
+        
         self.txt_nome = Entry(self.janela, font='Tahoma 14',
                                    width=27)
         self.txt_nome.grid(row=1, column=1)
 
-
+        #Idade    
         self.label_idade = Label(self.janela, text='Idade',
                                      font='Tahoma 14 bold', fg='red')
         self.label_idade.grid(row=2, column=0)
 
-        # Entry
+        
         self.txt_idade = Entry(self.janela, font='Tahoma 14',
                                    width=27)
         self.txt_idade.grid(row=2, column=1)
 
-
+        #Curso    
         self.label_curso = Label(self.janela, text='Curso',
                                      font='Tahoma 14 bold', fg='red')
         self.label_curso.grid(row=3, column=0)
@@ -51,34 +52,37 @@ class App:
                                                 'Node'],
                                         width=21, state='readonly')
         self.combo_curso.grid(row=3, column=1)
-
+        
+        #Nota
         self.label_nota = Label(self.janela, text='Nota',
                                      font='Tahoma 14 bold', fg='red')
         self.label_nota.grid(row=4, column=0)
 
-        # Entry
+
         self.txt_nota = Entry(self.janela, font='Tahoma 14',
                                    width=27)
         self.txt_nota.grid(row=4, column=1)
 
-
+        #Adicionar
         self.btn_adicionar = Button(self.janela, text='Adicionar',
                                     font='Tahoma 12 bold', width=7,
                                     fg='red',
                                     command=self.addAluno)
         self.btn_adicionar.grid(row=5, column=0)
 
-
+        #Ediitar
         self.btn_editar = Button(self.janela, text='Editar',
                                     font='Tahoma 12 bold', width=7,
                                     fg='red', command=self.editarAluno)
         self.btn_editar.grid(row=5, column=1)
 
+        #Excluir
         self.btn_excluir = Button(self.janela, text='Excluir',
                                     font='Tahoma 12 bold', width=7,
                                     fg='red', command=self.excluirAluno)
         self.btn_excluir.grid(row=5, column=2)
 
+        #Janela
         self.frame = Frame(self.janela)
         self.frame.grid(row=6, column=0, columnspan=3)
         self.colunas = ['Matricula', 'Nome', 'Idade', 'Curso', 'Nota']
@@ -88,14 +92,11 @@ class App:
             self.tabela.heading(coluna, text=coluna)
             self.tabela.column(coluna, width=110)
         
-        # bind
+        #Chama a função selecionarAluno
         self.tabela.bind('<ButtonRelease-1>', self.selecionarAluno)
         self.tabela.pack()
-        # resizable
-    
-
-
-
+         
+        #Atualiza a tabela com o iten selecionado 
         self.atualizarTabela()
         self.janela.mainloop()
 
